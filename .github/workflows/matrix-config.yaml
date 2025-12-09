@@ -1,0 +1,22 @@
+name: Matric Config
+
+on: push
+
+jobs:
+    run-nginx:
+        runs-on: self-hosted
+        steps:
+            - name: Echo Docker Details
+              run: docker info
+
+            - name: Run Image
+              run: docker run -d --rm -p 81:80 nginx
+
+    run-httpd:
+        runs-on: self-hosted
+        steps:
+            - name: Echo Docker Details
+              run: docker info
+
+            - name: Run Image
+              run: docker run -d --rm -p 81:80 nginx

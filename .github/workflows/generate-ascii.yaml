@@ -1,8 +1,12 @@
 name: Ascii value generate with cowsay
+
 on: push
+
 jobs:
+
     build_jobs_1:
         runs-on: self-hosted
+        timeout-minutes: 5
         steps:
             - name: Install cowsay program
               run: sudo apt-get install cowsay -y
@@ -12,11 +16,8 @@ jobs:
 
             - uses: actions/upload-artifact@v4
               with:
-                name: my-artifact
+                name: dragon-textfile
                 path: dragon.txt
-
-            - name: Sleep for 30 second
-              run: sleep 30
 
     build_jobs_2:
         runs-on: self-hosted
@@ -24,10 +25,7 @@ jobs:
         steps:
             - uses: actions/download-artifact@v5
               with:
-                name: my-artifact
-
-            - name: Sleep for 10 second
-              run: sleep 10
+                name: dragon-textfile
   
             - name: Test file exists
               run: grep -i "dragon" dragon.txt
@@ -38,7 +36,7 @@ jobs:
         steps:
             - uses: actions/download-artifact@v5
               with:
-                name: my-artifact
-                
+                name: dragon-textfile
+
             - name: Read file
               run: cat dragon.txt
