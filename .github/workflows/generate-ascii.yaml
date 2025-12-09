@@ -12,3 +12,18 @@ jobs:
 
             - name: Sleep for 30 second
               run: sleep 30
+
+    build_jobs_2:
+        runs-on: self-hosted
+        steps:
+            - name: Sleep for 10 second
+              run: sleep 10
+  
+            - name: Test file exists
+              run: grep -i "dragon" dragon.txt
+
+    build_jobs_3:
+        runs-on: self-hosted
+        steps:
+            - name: Read file
+              run: cat dragon.txt
