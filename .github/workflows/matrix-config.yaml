@@ -10,7 +10,7 @@ jobs:
               run: docker info
 
             - name: Run Image
-              run: docker run --rm -p 81:80 nginx:alpine3.22
+              run: docker run --rm nginx:alpine3.22
 
     run-httpd:
         runs-on: self-hosted
@@ -19,4 +19,4 @@ jobs:
               run: docker info
 
             - name: Run Image
-              run: docker run --rm -p 82:80 httpd:alpine3.23
+              run: docker run --rm httpd:alpine3.23
