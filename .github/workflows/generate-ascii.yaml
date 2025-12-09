@@ -2,7 +2,7 @@ name: Ascii value generate with cowsay
 on: push
 jobs:
     build_jobs_1:
-        runs-on: ubuntu:latest
+        runs-on: self-hosted
         steps:
             - name: Install cowsay program
               run: sudo apt-get install cowsay -y
