@@ -3,20 +3,15 @@ name: Matric Config
 on: push
 
 jobs:
-    run-nginx:
-        runs-on: self-hosted
-        steps:
-            - name: Echo Docker Details
-              run: docker info
+    deploy:
+      strategy:
+        matrix:
+          image: ["nginx:alpine3.22", "httpd:alpine3.23"]
 
-            - name: Run Image
-              run: docker run --rm -d nginx:alpine3.22
+      runs-on: self-hosted
+      steps:
+        - name: Echo Docker Details
+          run: docker info
 
-    run-httpd:
-        runs-on: self-hosted
-        steps:
-            - name: Echo Docker Details
-              run: docker info
-
-            - name: Run Image
-              run: docker run --rm -d httpd:alpine3.23
+        - name: Run Image
+          run: docker run --rm -d ${{matrix.image}}
